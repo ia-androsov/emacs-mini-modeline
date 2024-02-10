@@ -394,7 +394,7 @@ BODY will be supplied with orig-func and args."
 
   (setq mini-modeline--orig-resize-mini-windows resize-mini-windows)
   (setq resize-mini-windows nil)
-  (redisplay)
+  ;;(redisplay)
   ;; (add-hook 'pre-redisplay-functions #'mini-modeline-display)
   (setq mini-modeline--timer (run-with-timer 0 0.001 #'mini-modeline-display))
   (advice-add #'message :around #'mini-modeline--reroute-msg)
@@ -457,7 +457,7 @@ BODY will be supplied with orig-func and args."
      (buffer-list)))
 
   (setq resize-mini-windows mini-modeline--orig-resize-mini-windows)
-  (redisplay)
+  ;;(redisplay)
   ;; (remove-hook 'post-command-hook #'mini-modeline-display)
   ;; (remove-hook 'pre-redisplay-functions #'mini-modeline-display)
   (when (timerp mini-modeline--timer) (cancel-timer mini-modeline--timer))
