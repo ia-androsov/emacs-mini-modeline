@@ -120,7 +120,7 @@ Nil means current selected frame."
   :type 'sexp
   :group 'mini-modeline)
 
-(defcustom mini-modeline-display-gui-line t
+(defcustom mini-modeline-display-gui-line nil
   "Display thin line at the bottom of the window."
   :type 'boolean
   :group 'mini-modeline)
@@ -395,8 +395,9 @@ BODY will be supplied with orig-func and args."
   (setq mini-modeline--orig-resize-mini-windows resize-mini-windows)
   (setq resize-mini-windows nil)
   ;;(redisplay)
-  ;; (add-hook 'pre-redisplay-functions #'mini-modeline-display)
-  (setq mini-modeline--timer (run-with-timer 0 0.001 #'mini-modeline-display))
+  (add-hook 'pre-redisplay-functions #'mini-modeline-display)
+  (add-hook 'post-command-hook #'mini-modeline-diplay)
+  (setq mini-modeline--timer (run-with-timer 0 0.5 #'mini-modeline-display))
   (advice-add #'message :around #'mini-modeline--reroute-msg)
 
   (add-hook 'minibuffer-setup-hook #'mini-modeline--enter-minibuffer)
