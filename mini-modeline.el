@@ -365,7 +365,7 @@ BODY will be supplied with orig-func and args."
      (lambda (buf)
        (with-current-buffer buf
          (when (local-variable-p 'mode-line-format)
-           ;;(setq mini-modeline--orig-mode-line mode-line-format)
+           (setq mini-modeline--orig-mode-line mode-line-format)
            ;;(setq mode-line-format (when (and mini-modeline-display-gui-line
              ;;                                (display-graphic-p))
                ;;                     '(" "))))
