@@ -356,18 +356,20 @@ BODY will be supplied with orig-func and args."
   (when mini-modeline-hide-mode-line
     ;; Hide modeline for terminal, or use empty modeline for GUI.
     (setq-default mini-modeline--orig-mode-line mode-line-format)
-    ;;(setq-default mode-line-format (when (and mini-modeline-display-gui-line
-     ;;                                         (display-graphic-p))
-     ;;                                '(" ")))
+    (setq-default mode-line-format (when (and mini-modeline-display-gui-line
+                                              (display-graphic-p))
+                                     '(" ")))
+	  )
     ;; Do the same thing with opening buffers.
     (mapc
      (lambda (buf)
        (with-current-buffer buf
          (when (local-variable-p 'mode-line-format)
-           (setq mini-modeline--orig-mode-line mode-line-format)
+           ;;(setq mini-modeline--orig-mode-line mode-line-format)
            ;;(setq mode-line-format (when (and mini-modeline-display-gui-line
-            ;;                                 (display-graphic-p))
-            ;;                        '(" "))))
+             ;;                                (display-graphic-p))
+               ;;                     '(" "))))
+		 )
          (when (and mini-modeline-enhance-visual
                     (or (minibufferp buf)
                         (string-prefix-p " *Echo Area" (buffer-name))))
