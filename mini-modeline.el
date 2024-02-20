@@ -358,8 +358,8 @@ BODY will be supplied with orig-func and args."
     (setq-default mini-modeline--orig-mode-line mode-line-format)
     (setq-default mode-line-format (when (and mini-modeline-display-gui-line
                                               (display-graphic-p))
-                                     '(" ")))
-	  )
+                                     '(" "))))
+	
     ;; Do the same thing with opening buffers.
     (mapc
      (lambda (buf)
